@@ -9,7 +9,6 @@ const User = ({ match }) => {
   const { getUser, loading, user, getUserRepos, repos } = githubContext;
 
   useEffect(() => {
-    console.log(login);
     getUser(match.params.login);
     getUserRepos(match.params.login);
     // eslint-disable-next-line
@@ -85,7 +84,10 @@ const User = ({ match }) => {
             <li>
               {blog && (
                 <Fragment>
-                  <strong>Website: </strong> {blog}
+                  <strong>Website: </strong>{" "}
+                  <a href={blog} className="text-dark">
+                    {blog}
+                  </a>
                 </Fragment>
               )}
             </li>
