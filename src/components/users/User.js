@@ -6,9 +6,10 @@ import GithubContext from "../../context/github/githubContext";
 
 const User = ({ match }) => {
   const githubContext = useContext(GithubContext);
-  const { getUserRepos, repos, getUser, loading, user } = githubContext;
+  const { getUser, loading, user, getUserRepos, repos } = githubContext;
 
   useEffect(() => {
+    console.log(login);
     getUser(match.params.login);
     getUserRepos(match.params.login);
     // eslint-disable-next-line
@@ -68,7 +69,7 @@ const User = ({ match }) => {
             <li>
               {login && (
                 <Fragment>
-                  <strong>Username: </strong> {login}{" "}
+                  <strong>Username: </strong> {login}
                 </Fragment>
               )}
             </li>
@@ -76,7 +77,7 @@ const User = ({ match }) => {
             <li>
               {company && (
                 <Fragment>
-                  <strong>Company: </strong> {company}{" "}
+                  <strong>Company: </strong> {company}
                 </Fragment>
               )}
             </li>
@@ -84,7 +85,7 @@ const User = ({ match }) => {
             <li>
               {blog && (
                 <Fragment>
-                  <strong>Website: </strong> {blog}{" "}
+                  <strong>Website: </strong> {blog}
                 </Fragment>
               )}
             </li>
