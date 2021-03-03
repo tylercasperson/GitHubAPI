@@ -4,7 +4,8 @@ import {
   CLEAR_USERS,
   GET_USER,
   GET_REPOS,
-} from "../types";
+  TRAFFIC,
+} from '../types';
 
 export default (state, action) => {
   switch (action.type) {
@@ -36,6 +37,11 @@ export default (state, action) => {
       return {
         ...state,
         loading: true,
+      };
+    case TRAFFIC:
+      return {
+        ...state,
+        traffic: action.payload,
       };
     default:
       return state;

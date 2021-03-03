@@ -1,19 +1,20 @@
-import React, { useReducer } from "react";
-import axios from "axios";
-import GithubContext from "./githubContext";
-import GithubReducer from "./githubReducer";
+import React, { useReducer } from 'react';
+import axios from 'axios';
+import GithubContext from './githubContext';
+import GithubReducer from './githubReducer';
 import {
   SEARCH_USERS,
   SET_LOADING,
   CLEAR_USERS,
   GET_USER,
   GET_REPOS,
-} from "../types";
+  // TRAFFIC,
+} from '../types';
 
 let githubClientID;
 let githubClientSecret;
 
-if (process.env.NODE_ENV !== "production") {
+if (process.env.NODE_ENV !== 'production') {
   githubClientID = process.env.REACT_APP_GITHUB_CLIENT_ID;
   githubClientSecret = process.env.REACT_APP_GITHUB_SECRET;
 } else {
@@ -67,6 +68,23 @@ const GithubState = (props) => {
       payload: res.data,
     });
   };
+
+  // Views
+  // Test
+  // DO NOT PUSH THIS UNTIL DONE!!!
+  const getViews = async () => {
+    const res = await axios.get(
+      // 'https://api.github.com/users/tylercasperson/repos?sort=created:asc&per_page=100'
+      `https://api.github.com/repos/tylercasperson/contact-keeper/traffic/clones&client_id=${githubClientID}&client_secret=${githubClientSecret}`
+    );
+    console.log(res);
+
+    // dispatch({
+    //   type: TRAFFIC,
+    //   payload: res.data,
+    // });
+  };
+  getViews();
 
   // Clear Users
   const clearUsers = () => dispatch({ type: CLEAR_USERS });
